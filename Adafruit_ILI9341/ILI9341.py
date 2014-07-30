@@ -107,8 +107,8 @@ def image_to_data(image):
 	"""Generator function to convert a PIL image to 16-bit 565 RGB bytes."""
 	pixels = image.convert('RGB').load()
 	width, height = image.size
-	for x in range(width):
-		for y in range(height):
+	for y in range(height):
+		for x in range(width):
 			r,g,b = pixels[(x,y)]
 			color = color565(r, g, b)
 			yield (color >> 8) & 0xFF
@@ -323,4 +323,4 @@ class ILI9341(object):
 
 	def draw(self):
 		"""Return a PIL ImageDraw instance for 2D drawing on the image buffer."""
-		return ImageDraw(self.buffer)
+		return ImageDraw.Draw(self.buffer)
