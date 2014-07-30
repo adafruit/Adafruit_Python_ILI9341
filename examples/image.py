@@ -44,9 +44,11 @@ disp = TFT.ILI9341(DC, rst=RST, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_h
 disp.begin()
 
 # Load an image.
-# Make sure the image is 320x240 pixels!
 print 'Loading image...'
 image = Image.open('cat.jpg')
+
+# Resize the image and rotate it so it's 240x320 pixels.
+image = image.rotate(90).resize((240, 320))
 
 # Draw the image on the display hardware.
 print 'Drawing image'
