@@ -20,7 +20,7 @@
 # THE SOFTWARE.
 import numbers
 import time
-import numpy
+import numpy as np
 
 import Image
 import ImageDraw
