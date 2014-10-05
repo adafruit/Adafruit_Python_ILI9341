@@ -9,7 +9,7 @@ For all platforms (Raspberry Pi and Beaglebone Black) make sure you have the fol
 
 ````
 sudo apt-get update
-sudo apt-get install build-essential python-dev python-smbus python-pip python-imaging
+sudo apt-get install build-essential python-dev python-smbus python-pip python-imaging python-numpy
 ````
 
 For a Raspberry Pi make sure you have the RPi.GPIO library by executing:
