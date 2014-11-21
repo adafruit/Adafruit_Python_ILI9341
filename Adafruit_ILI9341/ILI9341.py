@@ -118,8 +118,8 @@ def image_to_data(image):
 class ILI9341(object):
 	"""Representation of an ILI9341 TFT LCD."""
 
-	def __init__(self, dc, spi, rst=None, gpio=GPIO.get_platform_gpio(),
-		width=ILI9341_TFTWIDTH, height=ILI9341_TFTHEIGHT):
+	def __init__(self, dc, spi, rst=None, gpio=None, width=ILI9341_TFTWIDTH,
+		height=ILI9341_TFTHEIGHT):
 		"""Create an instance of the display using SPI communication.  Must
 		provide the GPIO pin number for the D/C pin and the SPI driver.  Can
 		optionally provide the GPIO pin number for the reset pin as the rst
@@ -131,14 +131,17 @@ class ILI9341(object):
 		self._gpio = gpio
 		self.width = width
 		self.height = height
+		if self._gpio is None:
+			self._gpio = GPIO.get_platform_gpio()
 		# Set DC as output.
-		gpio.setup(dc, GPIO.OUT)
+		self._gpio.setup(dc, GPIO.OUT)
 		# Setup reset as output (if provided).
 		if rst is not None:
-			gpio.setup(rst, GPIO.OUT)
+			self._gpio.setup(rst, GPIO.OUT)
 		# Set SPI to mode 0, MSB first.
 		spi.set_mode(0)
 		spi.set_bit_order(SPI.MSBFIRST)
+		spi.set_clock_hz(64000000)
 		# Create an image buffer.
 		self.buffer = Image.new('RGB', (width, height))
 
