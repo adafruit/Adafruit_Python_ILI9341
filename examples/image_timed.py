@@ -26,16 +26,16 @@ import Adafruit_GPIO.SPI as SPI
 
 
 # Raspberry Pi configuration.
-#DC = 18
-#RST = 23
-#SPI_PORT = 0
-#SPI_DEVICE = 0
+DC = 18
+RST = 23
+SPI_PORT = 0
+SPI_DEVICE = 0
 
 # BeagleBone Black configuration.
-DC = 'P9_15'
-RST = 'P9_12'
-SPI_PORT = 1
-SPI_DEVICE = 0
+#DC = 'P9_15'
+#RST = 'P9_12'
+#SPI_PORT = 1
+#SPI_DEVICE = 0
 
 # Create TFT LCD display class.
 disp = TFT.ILI9341(DC, rst=RST, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_hz=64000000))
