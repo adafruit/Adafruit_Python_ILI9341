@@ -18,7 +18,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
-import Image
+from PIL import Image
 
 import Adafruit_ILI9341 as TFT
 import Adafruit_GPIO as GPIO
@@ -44,12 +44,12 @@ disp = TFT.ILI9341(DC, rst=RST, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE, max_speed_h
 disp.begin()
 
 # Load an image.
-print 'Loading image...'
+print('Loading image...')
 image = Image.open('cat.jpg')
 
 # Resize the image and rotate it so it's 240x320 pixels.
 image = image.rotate(90).resize((240, 320))
 
 # Draw the image on the display hardware.
-print 'Drawing image'
+print('Drawing image')
 disp.display(image)
