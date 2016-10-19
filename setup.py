@@ -5,8 +5,14 @@ try:
 except ImportError:
     pass
 
-from ez_setup import use_setuptools
-use_setuptools()
+try:
+    # Try using ez_setup to install setuptools if not already installed.
+    from ez_setup import use_setuptools
+    use_setuptools()
+except ImportError:
+    # Ignore import error and assume Python 3 which already has setuptools.
+    pass
+
 from setuptools import setup, find_packages
 
 
@@ -20,7 +26,7 @@ classifiers = ['Development Status :: 4 - Beta',
                'Topic :: System :: Hardware']
 
 setup(name              = 'Adafruit_ILI9341',
-      version           = '1.5.0',
+      version           = '1.5.1',
       author            = 'Tony DiCola',
       author_email      = 'tdicola@adafruit.com',
       description       = 'Library to control an ILI9341 TFT LCD display.',
